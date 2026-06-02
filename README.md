@@ -2,17 +2,12 @@
 > [Read in Russian / Читать на русском](README_RU.md)
 
 📡 **Website:** [yourordo.com](https://yourordo.com/)
-<!-- Ряд со скриншотами -->
 <p align="center">
   <img src="assets/screen1.png" width="28%" />
   <img src="assets/screen2.png" width="28%" />
   <img src="assets/screen3.png" width="28%" />
   <img src="assets/screen4.png" width="28%" />
-</p>
-
-<!-- Крупная GIF-ка на отдельной строке -->
-<p align="center">
-  <img src="assets/demo.gif" width="60%" />
+  <img src="assets/demo.gif" width="28%" />
 </p>
 
 ⚠️ **Disclaimer & Current Status:**
