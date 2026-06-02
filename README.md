@@ -2,6 +2,13 @@
 > [Read in Russian / Читать на русском](README_RU.md)
 
 📡 **Website:** [yourordo.com](https://yourordo.com/)
+<p align="center">
+  <img src="assets/screen1.png" width="28%" />
+  <img src="assets/screen2.png" width="28%" />
+  <img src="assets/screen3.png" width="28%" />
+  <img src="assets/screen4.png" width="28%" />
+  <img src="assets/demo.gif" width="28%" />
+</p>
 
 ⚠️ **Disclaimer & Current Status:**
 This project is currently a **fully functional prototype and an active proof-of-concept**. It is in a state of continuous development, refactoring, and testing. While the core communication mechanics are stable, please note that backward compatibility of local database schemas is not guaranteed at this stage. **App updates may occasionally result in a complete reset of your local chat history on your device.** Please do not use it as your primary channel for critical communications just yet!
