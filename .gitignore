@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+app/build/
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+local.properties
+
+# Личные файлы подписи (очень важно!)
+*.keystore
+*.jks
+signing.properties
+
+# Скрытые системные файлы
+.DS_Store
+Thumbs.db

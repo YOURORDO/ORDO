@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.ordo">
+
+    <!-- Сеть -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Фоновый сервис -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- ДОПОЛНИТЕЛЬНЫЕ РАЗРЕШЕНИЯ ДЛЯ БЕССМЕРТИЯ СЛУЖБЫ -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Камера и сканирование QR -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <activity
+            android:name="com.example.ordo.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Chatmode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.example.ordo.EtherService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="false"
+            android:foregroundServiceType="remoteMessaging" />
+
+        <!-- 1. ПРИЕМНИК АВТОЗАПУСКА ПРИ ВКЛЮЧЕНИИ ТЕЛЕФОНА (ТВОЙ) -->
+        <receiver
+            android:name="com.example.ordo.BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 2. ВОССТАНАВЛИВАЕМ ПРИЕМНИК ФОНОВЫХ ПИНГОВ КАЖДЫЕ 15 МИНУТ (СТАЛО) -->
+        <receiver
+            android:name="com.example.ordo.EtherReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- 3. РЕГИСТРИРУЕМ FILEPROVIDER ДЛЯ БЕЗОПАСНОЙ ОТПРАВКИ ИЗОБРАЖЕНИЙ (СТАЛО) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.ordo.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>
